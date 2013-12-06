@@ -1,0 +1,20 @@
+{
+  "name": "tris3d",
+  "version": "0.0.0",
+  "description": "3d tic tac toe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fibo/tris3d.git"
+  },
+  "author": "fibo",
+  "license": [ {
+    "type": "MIT",
+    "url": "http://fibo.mit-license.org/"
+  } ],
+  "readmeFilename": "README.md",
+  "gitHead": "58ab9dda33dcd822c7c21cc8d8dcfa4cdd4c6d6a"
+}
