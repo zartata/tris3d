@@ -4,17 +4,27 @@
   "description": "3d tic tac toe",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --bail --require should --reporter min"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/fibo/tris3d.git"
   },
-  "author": "fibo",
-  "license": [ {
-    "type": "MIT",
-    "url": "http://fibo.mit-license.org/"
-  } ],
+  "author": {
+    "name": "fibo",
+    "url": "http://g14n.info"
+  },
+  "license": [
+    {
+      "type": "MIT",
+      "url": "http://fibo.mit-license.org/"
+    }
+  ],
   "readmeFilename": "README.md",
-  "gitHead": "58ab9dda33dcd822c7c21cc8d8dcfa4cdd4c6d6a"
+  "gitHead": "58ab9dda33dcd822c7c21cc8d8dcfa4cdd4c6d6a",
+  "homepage": "http://g14n.info/tris3d",
+  "devDependencies": {
+    "should": "~4.0.4",
+    "mocha": "~1.20.1"
+  }
 }
