@@ -11,27 +11,25 @@ function isTris () {
 exports.isTris = isTris
 
 /**
- * Convert coordinates to index
+ * Convert point in Z3xZ3xZ3 to index
  *
- * @param {Number} x integer in [0, 1, 2]
- * @param {Number} y integer in [0, 1, 2]
- * @param {Number} z integer in [0, 1, 2]
+ * @param {Array} coordinates
  *
  * @return {Number} index
  */
 
-function indexOfCoordinates (x, y, z) {
-  return x + 3 * y + 9 * z
+function indexOfCoordinates (point) {
+  return point[0] + 3 * point[1] + 9 * point[2]
 }
 
 exports.indexOfCoordinates = indexOfCoordinates
 
 /**
- * Convert index to coordinates
+ * Convert index to point in Z3xZ3xZ3
  *
- * @param {Number} index from 0 to 26
+ * @param {Number} index
  *
- * @return {Object} coordinates of integers in [0, 1, 2]
+ * @return {Array} coordinates
  */
 
 function coordinatesOfIndex (index) {
@@ -41,6 +39,8 @@ function coordinatesOfIndex (index) {
   y = ((index - x) % 9) / 3
   z = (index - x - (3 * y)) / 9
 
-  return {x: x, y: y, z: z}
+  return [x, y, z]
 }
+
+exports.coordinatesOfIndex = coordinatesOfIndex
 
