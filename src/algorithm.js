@@ -1,7 +1,10 @@
 
 /**
- * Check if tuple is a tris
+ * Check if three points form a tris
  *
+ * @param {Array}
+ *
+ * @return {Boolean}
  */
 
 function isTris () {
