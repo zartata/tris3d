@@ -6,6 +6,7 @@ var algorithm = tris3d.algorithm
 
 var coordOf = algorithm.coordinatesOfIndex
   , indexOf = algorithm.indexOfCoordinates
+  , semiSum = algorithm.semiSumInZ3xZ3xZ3
 
 describe('algorithm', function () {
   describe('indexOfCoordinates', function () {
@@ -69,6 +70,21 @@ describe('algorithm', function () {
       coordOf(24).should.eql([0, 2 ,2])
       coordOf(25).should.eql([1, 2 ,2])
       coordOf(26).should.eql([2, 2 ,2])
+    })
+  })
+
+  describe('semiSuminZ3xZ3xZ3', function () {
+    it('return index of midpoint in Z3 x Z3 x Z3 space', function () {
+      // If both inputs are the same, the midpoint is itself
+      for (var i = 0; i < 27; i++)
+        semiSum(i, i).should.eql(i)
+
+      semiSum( 0,  1).should.eql(2)
+      semiSum( 0,  2).should.eql(1)
+      semiSum( 1,  2).should.eql(0)
+      semiSum( 2,  3).should.eql(7)
+      semiSum( 9, 10).should.eql(11)
+      semiSum(10, 11).should.eql(9)
     })
   })
 })
