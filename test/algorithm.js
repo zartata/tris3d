@@ -76,21 +76,28 @@ describe('algorithm', function () {
   describe('semiSuminZ3xZ3xZ3', function () {
     it('return index of midpoint in Z3 x Z3 x Z3 space', function () {
       semiSum( 0,  1).should.eql(2)
-      semiSum( 0,  2).should.eql(1)
-      semiSum( 1,  2).should.eql(0)
       semiSum( 2,  3).should.eql(7)
-      semiSum( 7,  2).should.eql(3)
-      semiSum( 7,  3).should.eql(2)
       semiSum( 9, 10).should.eql(11)
-      semiSum( 9, 11).should.eql(10)
-      semiSum(10, 11).should.eql(9)
-      semiSum(11, 10).should.eql(9)
+      semiSum(10, 13).should.eql(16)
+      semiSum(24, 25).should.eql(26)
     })
 
     it('is simmetric', function () {
       for (var i = 0; i < 27; i++)
         for (var j = 0; j < 27; j++)
           semiSum(i, j).should.eql(semiSum(j, i))
+    })
+
+    it('is cyclic', function () {
+      var k
+
+      for (var i = 0; i < 27; i++)
+        for (var j = 0; j < 27; j++) {
+          k = semiSum(i, j)
+
+          semiSum(j, k).should.eql(i)
+          semiSum(k, i).should.eql(j)
+        }
     })
   })
 })
