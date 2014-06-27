@@ -12,8 +12,23 @@
  */
 
 function isTris (a, b, c) {
-  var center = indexOfCoordinates([1, 1, 1])
-  
+  var indexOfCenter = indexOfCoordinates([1, 1, 1])
+    , indexOfA = indexOfCoordinates(a)
+    , indexOfB = indexOfCoordinates(b)
+    , indexOfC = indexOfCoordinates(c)
+
+  // A necessary condition to be a tris is
+  //
+  //     semiSum(a, b) = c
+  //
+  // Since semiSum is clyclic, I can choose a, b, c in any order
+  if (semiSumInZ3xZ3xZ3(indexOfA, indexOfB) !== indexOfC)
+    return false
+
+  // If some point is the center, then it is a tris
+  if ((indexOfCenter === indexOfA) || (indexOfCenter === indexOfB) || (indexOfCenter === indexOfC))
+    return true
+
   return false
 }
 

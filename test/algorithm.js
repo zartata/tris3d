@@ -6,6 +6,7 @@ var algorithm = tris3d.algorithm
 
 var coordOf = algorithm.coordinatesOfIndex
   , indexOf = algorithm.indexOfCoordinates
+  , isTris  = algorithm.isTris
   , semiSum = algorithm.semiSumInZ3xZ3xZ3
 
 describe('algorithm', function () {
@@ -79,7 +80,9 @@ describe('algorithm', function () {
       semiSum( 2,  3).should.eql(7)
       semiSum( 9, 10).should.eql(11)
       semiSum(10, 13).should.eql(16)
+      semiSum(11, 12).should.eql(16)
       semiSum(24, 25).should.eql(26)
+      // TODO test more combinations
     })
 
     it('is simmetric', function () {
@@ -99,6 +102,35 @@ describe('algorithm', function () {
           semiSum(k, i).should.eql(j)
         }
     })
+  })
+
+  describe('isTris', function () {
+    it('is invariant under permutation or arguments', function () {
+      for (var i = 0; i < 27; i++)
+        for (var j = 0; j < i; j++)
+          for (var k = 0; k < j; k++) {
+            // cyclic
+            isTris(i, j, k).should.eql(isTris(j, k, i))
+            isTris(j, k, i).should.eql(isTris(k, i, j))
+            // transposition
+            isTris(i, j, k).should.eql(isTris(j, i, k))
+            isTris(i, j, k).should.eql(isTris(i, k, j))
+            isTris(i, j, k).should.eql(isTris(k, j, i))
+          }
+    })
+
+    it('is false when c is not semiSum of a, b', function () {
+      for (var i = 0; i < 27; i++)
+        for (var j = 0; j < i; j++)
+          for (var k = 0; k < j; k++)
+            if (k !== semiSum(i, j))
+              isTris(i, j, k).should.be.not.ok
+    })
+
+    it('is true when semiSum condition holds and some point is the center'/*, function () {
+      isTris(12, 13, 14).should.be.ok
+      isTris(10, 13, 16).should.be.ok
+    }*/)
   })
 })
 
