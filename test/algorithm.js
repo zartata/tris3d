@@ -131,6 +131,11 @@ describe('algorithm', function () {
       isTris(12, 13, 14).should.be.ok
       isTris(10, 13, 16).should.be.ok
     }*/)
+    
+    it('works properly', function () {
+      //isTris(0, 1, 2).should.be.ok
+      isTris(0, 1, 3).should.be.ko
+    })
   })
 })
 
