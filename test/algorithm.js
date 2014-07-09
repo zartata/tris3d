@@ -9,80 +9,56 @@ var coordOf = algorithm.coordinatesOfIndex
   , isTris  = algorithm.isTris
   , semiSum = algorithm.semiSumInZ3xZ3xZ3
 
+// Sorted array of points from point[0] to point[26]
+var point = [
+  [0, 0, 0], [1, 0, 0], [2, 0, 0] // 0   1   2
+, [0, 1, 0], [1, 1, 0], [2, 1, 0] // 3   4   5
+, [0, 2, 0], [1, 2, 0], [2, 2, 0] // 6   7   8
+, [0, 0, 1], [1, 0, 1], [2, 0, 1] // 9   10  11
+, [0, 1, 1], [1, 1, 1], [2, 1, 1] // 12  13  14
+, [0, 2, 1], [1, 2, 1], [2, 2, 1] // 15  16  17
+, [0, 0, 2], [1, 0, 2], [2, 0, 2] // 18  19  20
+, [0, 1, 2], [1, 1, 2], [2, 1, 2] // 21  22  23
+, [0, 2, 2], [1, 2, 2], [2, 2, 2] // 24  25  26
+]
+
 describe('algorithm', function () {
   describe('indexOfCoordinates', function () {
     it('convert Z3xZ3xZ3 point to 0..26 integer', function () {
-      indexOf([0, 0, 0]).should.eql(0)
-      indexOf([1, 0, 0]).should.eql(1)
-      indexOf([2, 0, 0]).should.eql(2)
-      indexOf([0, 1, 0]).should.eql(3)
-      indexOf([1, 1, 0]).should.eql(4)
-      indexOf([2, 1, 0]).should.eql(5)
-      indexOf([0, 2, 0]).should.eql(6)
-      indexOf([1, 2, 0]).should.eql(7)
-      indexOf([2, 2, 0]).should.eql(8)
-      indexOf([0, 0, 1]).should.eql(9)
-      indexOf([1, 0, 1]).should.eql(10)
-      indexOf([2, 0, 1]).should.eql(11)
-      indexOf([0, 1, 1]).should.eql(12)
-      indexOf([1, 1, 1]).should.eql(13)
-      indexOf([2, 1, 1]).should.eql(14)
-      indexOf([0, 2, 1]).should.eql(15)
-      indexOf([1, 2, 1]).should.eql(16)
-      indexOf([2, 2, 1]).should.eql(17)
-      indexOf([0, 0, 2]).should.eql(18)
-      indexOf([1, 0, 2]).should.eql(19)
-      indexOf([2, 0, 2]).should.eql(20)
-      indexOf([0, 1, 2]).should.eql(21)
-      indexOf([1, 1, 2]).should.eql(22)
-      indexOf([2, 1, 2]).should.eql(23)
-      indexOf([0, 2, 2]).should.eql(24)
-      indexOf([1, 2, 2]).should.eql(25)
-      indexOf([2, 2, 2]).should.eql(26)
+      for (i in point)
+        indexOf(point[i]).should.eql(i)
     })
   })
 
   describe('coordinatesOfIndex', function () {
     it('convert 0..26 integer to Z3xZ3xZ3 point', function () {
-      coordOf( 0).should.eql([0, 0 ,0])
-      coordOf( 1).should.eql([1, 0 ,0])
-      coordOf( 2).should.eql([2, 0 ,0])
-      coordOf( 3).should.eql([0, 1 ,0])
-      coordOf( 4).should.eql([1, 1 ,0])
-      coordOf( 5).should.eql([2, 1 ,0])
-      coordOf( 6).should.eql([0, 2 ,0])
-      coordOf( 7).should.eql([1, 2 ,0])
-      coordOf( 8).should.eql([2, 2 ,0])
-      coordOf( 9).should.eql([0, 0 ,1])
-      coordOf(10).should.eql([1, 0 ,1])
-      coordOf(11).should.eql([2, 0 ,1])
-      coordOf(12).should.eql([0, 1 ,1])
-      coordOf(13).should.eql([1, 1 ,1])
-      coordOf(14).should.eql([2, 1 ,1])
-      coordOf(15).should.eql([0, 2 ,1])
-      coordOf(16).should.eql([1, 2 ,1])
-      coordOf(17).should.eql([2, 2 ,1])
-      coordOf(18).should.eql([0, 0 ,2])
-      coordOf(19).should.eql([1, 0 ,2])
-      coordOf(20).should.eql([2, 0 ,2])
-      coordOf(21).should.eql([0, 1 ,2])
-      coordOf(22).should.eql([1, 1 ,2])
-      coordOf(23).should.eql([2, 1 ,2])
-      coordOf(24).should.eql([0, 2 ,2])
-      coordOf(25).should.eql([1, 2 ,2])
-      coordOf(26).should.eql([2, 2 ,2])
+      for (i in point)
+        coordOf(i).should.eql(point[i])
     })
   })
 
   describe('semiSuminZ3xZ3xZ3', function () {
     it('return index of midpoint in Z3 x Z3 x Z3 space', function () {
+      // TODO test all combinations: how much are they?
       semiSum( 0,  1).should.eql(2)
+      semiSum( 0,  3).should.eql(6)
+      semiSum( 1,  5).should.eql(6)
+      semiSum( 1, 10).should.eql(19)
       semiSum( 2,  3).should.eql(7)
+      semiSum( 3,  4).should.eql(5)
+      semiSum( 6,  7).should.eql(8)
+      semiSum( 6,  9).should.eql(21)
       semiSum( 9, 10).should.eql(11)
       semiSum(10, 13).should.eql(16)
       semiSum(11, 12).should.eql(16)
+      semiSum(12, 13).should.eql(14)
+      semiSum(15, 16).should.eql(17)
+      semiSum(15, 18).should.eql(3)
+      semiSum(17, 18).should.eql(4)
+      semiSum(18, 19).should.eql(20)
+      semiSum(20, 21).should.eql(25)
+      semiSum(21, 22).should.eql(23)
       semiSum(24, 25).should.eql(26)
-      // TODO test more combinations
     })
 
     it('is simmetric', function () {
@@ -112,6 +88,7 @@ describe('algorithm', function () {
             // cyclic
             isTris(i, j, k).should.eql(isTris(j, k, i))
             isTris(j, k, i).should.eql(isTris(k, i, j))
+
             // transposition
             isTris(i, j, k).should.eql(isTris(j, i, k))
             isTris(i, j, k).should.eql(isTris(i, k, j))
@@ -127,14 +104,14 @@ describe('algorithm', function () {
               isTris(i, j, k).should.be.not.ok
     })
 
-    it('is true when semiSum condition holds and some point is the center'/*, function () {
-      isTris(12, 13, 14).should.be.ok
-      isTris(10, 13, 16).should.be.ok
-    }*/)
-    
+    it('is true when semiSum condition holds and some point is the center', function () {
+      isTris(point[12], point[13], point[14]).should.be.ok
+      isTris(point[10], point[13], point[16]).should.be.ok
+    })
+
     it('works properly', function () {
-      //isTris(0, 1, 2).should.be.ok
-      isTris(0, 1, 3).should.be.ko
+      isTris(point[0], point[1], point[2]).should.be.ok
+      isTris(point[0], point[1], point[3]).should.be.ko
     })
   })
 })

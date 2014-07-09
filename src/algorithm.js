@@ -21,18 +21,18 @@ function isTris (a, b, c) {
   // Sia T = {a, b, c} una terna di punti.
 
   // Condizione necessaria affinchè sia un tris è
-  // 
+  //
   // c = Z3-semisomma di a e b.
-  // 
+  //
   // Per le proprietà della Z3-semisomma, posso scegliere a e b a piacere.
 
   // A necessary condition to be a tris is
   //
   //     semiSum(a, b) = c
   //
-  // Since semiSum is clyclic, I can choose a, b, c in any order
-  // 
-  // 
+  // Since semiSum is cyclic, I can choose a, b, c in any order
+  //
+
   if (semiSumInZ3xZ3xZ3(indexOfA, indexOfB) !== indexOfC)
     return false
 
@@ -42,8 +42,8 @@ function isTris (a, b, c) {
   if ((indexOfCenter === indexOfA) || (indexOfCenter === indexOfB) || (indexOfCenter === indexOfC))
     return true
 
-  // A questo punto, esiste un indice k t.c. A_k = B_k 
-  // sia P t.c. P_h = 1 per ogni k diverso da h, 
+  // A questo punto, esiste un indice k t.c. A_k = B_k
+  // sia P t.c. P_h = 1 per ogni k diverso da h,
   // cioe P è il centro di una faccia.
 
   if (a[0] === b[0])
@@ -51,8 +51,8 @@ function isTris (a, b, c) {
   if (a[1] === b[1])
     indexOfP = indexOfCoordinates([1, a[1], 1])
   if (a[2] === b[2])
-    indexOfP = indexOfCoordinates([1, 1, a[1]])
-  
+    indexOfP = indexOfCoordinates([1, 1, a[2]])
+
   // Se esistono indici k,h tali che
   // A_k = B_k, A_h = B_h
   // allora implica tris.
@@ -62,11 +62,11 @@ function isTris (a, b, c) {
     return true
   if ((a[1] === b[1]) && (a[2] === b[2]))
     return true
-    
+
   // Se T contiene p, implica tris.
   if ((indexOfP === indexOfA) || (indexOfP === indexOfB) || (indexOfP === indexOfC))
     return true
-  
+
   // In tutti gli altri casi non si tratta di un tris. In particolare ci sono
   // terne T che soddisfanno la condizione c = Z3-semisomma di a e b, ma, non
   // sono dei tris (ad esempio 0, 5, 7).
