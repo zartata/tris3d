@@ -112,6 +112,7 @@ describe('algorithm', function () {
     it('works properly', function () {
       isTris(point[0], point[1], point[2]).should.be.ok
       isTris(point[0], point[1], point[3]).should.be.ko
+      isTris(point[20], point[22], point[24]).should.be.ok
     })
   })
 })

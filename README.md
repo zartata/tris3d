@@ -12,14 +12,14 @@ With [npm](https://npmjs.org/) do
 $ npm install tris3d
 ```
 
-# Development
+# Description
 
-Install [fibo/fibo-gulptasks][1] for development tasks automation.
+Algorithm to play tic tac toe in dimension three. See [demo][1].
 
 # License
 
 [MIT][2]
 
-[1]: https://github.com/fibo/fibo-gulptasks
+[1]: http://tris3d.jit.su
 [2]: http://fibo.mit-license.org/
 

@@ -1,6 +1,6 @@
 {
   "name": "tris3d",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "3d tic tac toe",
   "main": "index.js",
   "scripts": {
