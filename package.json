@@ -1,8 +1,8 @@
 {
   "name": "tris3d",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "3d tic tac toe",
-  "main": "index.js",
+  "main": "tris3d.js",
   "scripts": {
     "test": "mocha --bail --require should --reporter min"
   },
@@ -17,11 +17,9 @@
   "license": [
     {
       "type": "MIT",
-      "url": "http://fibo.mit-license.org/"
+      "url": "http://g14n.info/mit-license"
     }
   ],
-  "readmeFilename": "README.md",
-  "gitHead": "58ab9dda33dcd822c7c21cc8d8dcfa4cdd4c6d6a",
   "homepage": "http://g14n.info/tris3d",
   "devDependencies": {
     "should": "~4.0.4",

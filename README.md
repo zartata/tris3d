@@ -4,7 +4,7 @@
 
 [![NPM version](https://badge.fury.io/js/tris3d.png)](http://badge.fury.io/js/tris3d) [![Build Status](https://travis-ci.org/fibo/tris3d.png?branch=master)](https://travis-ci.org/fibo/tris3d.png?branch=master) [![Dependency Status](https://gemnasium.com/fibo/tris3d.png)](https://gemnasium.com//tris3d)
 
-# Installation
+## Installation
 
 With [npm](https://npmjs.org/) do
 
@@ -12,14 +12,14 @@ With [npm](https://npmjs.org/) do
 $ npm install tris3d
 ```
 
-# Description
+## Description
 
 Algorithm to play tic tac toe in dimension three. See [demo][1].
 
-# License
+## License
 
 [MIT][2]
 
 [1]: http://tris3d.jit.su
-[2]: http://fibo.mit-license.org/
+[2]: http://g14n.info/mit-license
 
