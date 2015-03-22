@@ -18,44 +18,33 @@ function isTris (a, b, c) {
     , indexOfC = indexOfCoordinates(c)
     , indexOfP
 
-  // Sia T = {a, b, c} una terna di punti.
-
-  // Condizione necessaria affinchè sia un tris è
+  // Let T = {a, b, c} be a tern of points.
   //
-  // c = Z3-semisomma di a e b.
-  //
-  // Per le proprietà della Z3-semisomma, posso scegliere a e b a piacere.
-
   // A necessary condition to be a tris is
   //
   //     semiSum(a, b) = c
   //
-  // Since semiSum is cyclic, I can choose a, b, c in any order
-  //
-
+  // Since semiSum is cyclic, I can choose a, b, c in any order.
   if (semiSumInZ3xZ3xZ3(indexOfA, indexOfB) !== indexOfC)
     return false
 
-
-  // Se uno dei tre punti e' il centro, implica che T e' un tris.
-  // If some point is the center, then it is a tris
+  // If any point is the center, then T it is a tris.
   if ((indexOfCenter === indexOfA) || (indexOfCenter === indexOfB) || (indexOfCenter === indexOfC))
     return true
 
-  // A questo punto, esiste un indice k t.c. A_k = B_k
-  // sia P t.c. P_h = 1 per ogni k diverso da h,
-  // cioe P è il centro di una faccia.
-
+	// Now, if it exists an index k where A_k = B_k
+	// let be a point P where P_h = 1 for every k != h,
+	// in other words P is the center of a face.
   if (a[0] === b[0])
-    indexOfP = indexOfCoordinates([a[0], 1, 1])
+    indexOfP = indexOfCoordinates([a[0], 1,       1])
   if (a[1] === b[1])
-    indexOfP = indexOfCoordinates([1, a[1], 1])
+    indexOfP = indexOfCoordinates([1,    a[1],    1])
   if (a[2] === b[2])
-    indexOfP = indexOfCoordinates([1, 1, a[2]])
+    indexOfP = indexOfCoordinates([1,    1,    a[2]])
 
-  // Se esistono indici k,h tali che
+	// If there exists indexes k, h where
   // A_k = B_k, A_h = B_h
-  // allora implica tris.
+  // then T is a tris.
   if ((a[0] === b[0]) && (a[1] === b[1]))
     return true
   if ((a[0] === b[0]) && (a[2] === b[2]))
@@ -63,16 +52,13 @@ function isTris (a, b, c) {
   if ((a[1] === b[1]) && (a[2] === b[2]))
     return true
 
-  // Se T contiene p, implica tris.
+  // If T contains P, then it is a tris.
   if ((indexOfP === indexOfA) || (indexOfP === indexOfB) || (indexOfP === indexOfC))
     return true
 
-  // In tutti gli altri casi non si tratta di un tris. In particolare ci sono
-  // terne T che soddisfanno la condizione c = Z3-semisomma di a e b, ma, non
-  // sono dei tris (ad esempio 0, 5, 7).
-
-  // Otherwise it is not a tris, in particular exists some a, b, c for which the semiSUm condition holds
-  // but they are not a tris.
+  // All other cases are not a tris.
+  // In particular there are some terns,for example, U = {0, 5, 7}
+  // for which the semiSum condition holds but they are not a tris.
   return false
 }
 
@@ -157,3 +143,4 @@ function coordinatesOfIndex (index) {
 }
 
 exports.coordinatesOfIndex = coordinatesOfIndex
+
